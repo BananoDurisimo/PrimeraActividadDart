@@ -13,7 +13,12 @@ import 'dart:io';
 12. Mostrar los resultados en consola usando print().
 */
 void main() {
+
+  
   //Información del Aprendiz
+
+  final horaActual = DateTime.now();
+
   stdout.write("Ingresa tu nombre: ");
   String? nombre = stdin.readLineSync();
 
@@ -29,6 +34,8 @@ void main() {
 
 
   //Información de las Notas
+
+  const notaMinima = 3.0;
   stdout.write("Ingresa la Nota #1: ");
   double? nota1 = double.parse(stdin.readLineSync()!);
 
@@ -46,15 +53,15 @@ void main() {
 
   //Validaciones
 
-  var aprobo;
-  if(promedioNotas >= 3.0 ){
+  final aprobo;
+  if(promedioNotas >= notaMinima ){
     aprobo = true;
   }
   else{
     aprobo = false;
   }
 
-  var activo;
+  final activo;
   stdout.write("El aprendiz está activo? (si/no): ");
   var estaactivo = stdin.readLineSync();
 
@@ -65,7 +72,7 @@ void main() {
     activo = false;
   }
 
-  var mayorDeEdad;
+  bool mayorDeEdad;
   if(edad >= 18){
     mayorDeEdad = true;
   }
@@ -79,7 +86,7 @@ void main() {
 
   //Determinaciones
 
-  var continua;
+  bool continua;
   if(aprobo && activo){
     stdout.write("El aprendiz puede continuar en la formación");
     continua = true;
@@ -89,7 +96,7 @@ void main() {
     continua = false;
   }
 
-  var requiereapoyo;
+  bool requiereapoyo;
   if(promedioNotas < 4.0){
     stdout.write("El aprendiz requiere apoyo");
     requiereapoyo = true; 
@@ -101,6 +108,7 @@ void main() {
   
   //Mostrar la información en la consola
   print("");
+  print(horaActual);
   print("== Información del estudiante ==");
   print("Nombre: $nombre");
   print("Edad: $edad");
